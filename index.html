@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0c0a08" />
+  <meta name="description" content="Undangan Pernikahan Supriyadi & Hayu Kartikasari — 24 Mei 2026" />
+  <title>Supriyadi & Hayu — Wedding</title>
+  <link rel="icon" href="images/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="cover.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="scroll-locked">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="gradient-orb gradient-orb--a" aria-hidden="true"></div>
+  <div class="gradient-orb gradient-orb--b" aria-hidden="true"></div>
+
+  <div class="scroll-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"
+    id="scrollProgress"></div>
+
+  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+
+  <div class="cover-page" id="coverPage">
+    <div class="cover-page__bg"></div>
+    <div class="cover-page__content">
+      <p class="cover-page__eyebrow">The Wedding Of</p>
+      <h1 class="cover-page__title">Supriyadi &amp; Hayu</h1>
+      <p class="cover-page__date">24 &middot; 05 &middot; 2026</p>
+
+      <div class="cover-page__countdown" id="coverCountdownRoot">
+        <div class="cover-page__cd-item"><span id="coverDays">00</span><small>Hari</small></div>
+        <div class="cover-page__cd-item"><span id="coverHours">00</span><small>Jam</small></div>
+        <div class="cover-page__cd-item"><span id="coverMins">00</span><small>Menit</small></div>
+        <div class="cover-page__cd-item"><span id="coverSecs">00</span><small>Detik</small></div>
+      </div>
+
+      <div class="cover-page__guest">
+        <p>Kepada Yth. Bapak/Ibu/Saudara/i</p>
+        <h2 id="coverGuestName">Tamu Terhormat</h2>
+      </div>
+
+      <button type="button" class="cover-page__btn" id="coverCta" aria-label="Buka Undangan" data-ripple>
+        <span class="cover-page__btn-text">Buka Undangan</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <path d="M12 5v14M5 12l7 7 7-7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="preloader" id="preloader" aria-live="polite" aria-busy="true">
+    <div class="preloader__inner">
+      <p class="preloader__label fade-in-slow">The Wedding of</p>
+      <h1 class="preloader__names typing-line" style="--steps: 20; --duration: 2s; --delay: 1s;">
+        <span class="preloader__name preloader__name--blur" data-text="Supriyadi">SUPRI</span>
+        <span class="preloader__ampersand">&</span>
+        <span class="preloader__name preloader__name--blur" data-text="Hayu">HAYU</span>
+      </h1>
+      <p class="preloader__sub typing-line" style="--steps: 14; --duration: 1s; --delay: 3s;">24 &middot; 05 &middot;
+        2026</p>
+    </div>
+  </div>
+
+  <button type="button" class="music-toggle" id="musicToggle" aria-pressed="false" aria-label="Putar musik latar">
+    <span class="music-toggle__icon music-toggle__icon--off" aria-hidden="true">♪</span>
+    <span class="music-toggle__icon music-toggle__icon--on" aria-hidden="true">♫</span>
+  </button>
+  <audio id="bgMusic" loop preload="metadata" playsinline>
+    <source src="music/cant-help-falling-in-love.mp3" type="audio/mpeg" />
+    <source src="music/marry-you.mp3.mp3" type="audio/mpeg" />
+  </audio>
+
+  <header class="hero" id="hero">
+    <div class="hero__parallax" data-parallax="bg">
+      <div class="hero__bg-layer hero__bg-layer--back"></div>
+      <div class="hero__bg-layer hero__bg-layer--mid"></div>
+      <div class="hero__bg-layer hero__bg-layer--front"></div>
+    </div>
+    <div class="hero__veil"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal" data-reveal>
+        <span class="reveal__inner">Undangan Pernikahan</span>
+      </p>
+      <h1 class="hero__title">
+        <span class="hero__title-line reveal" data-reveal><span class="reveal__inner">SUPRIYADI</span></span>
+        <span class="hero__title-line hero__title-line--amp reveal" data-reveal><span
+            class="reveal__inner">&</span></span>
+        <span class="hero__title-line reveal" data-reveal><span class="reveal__inner">HAYU KARTIKASARI</span></span>
+      </h1>
+      <p class="hero__date reveal" data-reveal><span class="reveal__inner">Sabtu, 24 Mei 2026</span></p>
+    </div>
+    <div class="hero__scroll-hint" aria-hidden="true">
+      <span></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section--invite" id="invitation">
+      <div class="container">
+        <div class="invite-card section-fade" data-io>
+          <p class="invite-card__dear">Kepada Yth.</p>
+          <h2 class="invite-card__guest" id="guestName">Tamu Terhormat</h2>
+          <p class="invite-card__text">Dengan memohon ridho Allah SWT, kami mengundang Bapak/Ibu/Saudara/i untuk hadir
+            dalam syukuran pernikahan kami.</p>
+          <div class="invite-card__ornament" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--verse" id="verse">
+      <div class="container section-fade" data-io>
+        <blockquote class="verse-card">
+          <p class="verse-text">“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan
+            untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya.”</p>
+          <cite class="verse-ref">QS. Ar-Rum: 21</cite>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="section section--couple" id="couple">
+      <div class="couple-parallax" data-parallax="wrap">
+        <div class="couple-parallax__bg" data-parallax="slow"></div>
+      </div>
+      <div class="container couple-grid section-fade" data-io>
+        <article class="couple-card">
+          <div class="couple-card__media">
+            <picture>
+              <source type="image/webp" srcset="images/supriyadi.webp" />
+              <img src="images/supriyadi.jpg.jpg" alt="Supriyadi" width="220" height="275" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="couple-card__shine" aria-hidden="true"></div>
+          </div>
+          <h3 class="couple-card__name">Supriyadi</h3>
+          <p class="couple-card__parents">Putra dari Bapak Dardiri<br />&amp; Ibu Yatini</p>
+          <a class="couple-card__ig" href="https://instagram.com/supriyd1920" target="_blank"
+            rel="noopener noreferrer">@supriyd1920</a>
+        </article>
+        <div class="couple-divider" aria-hidden="true">
+          <span>&amp;</span>
+        </div>
+        <article class="couple-card couple-card--reverse">
+          <div class="couple-card__media">
+            <picture>
+              <source type="image/webp" srcset="images/hayu-kartikasari.webp" />
+              <img src="images/hayu-kartikasari.jpg.jpg" alt="Hayu Kartikasari" width="220" height="275" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="couple-card__shine" aria-hidden="true"></div>
+          </div>
+          <h3 class="couple-card__name">Hayu Kartikasari</h3>
+          <p class="couple-card__parents">Putri dari Bapak Mimbar<br />&amp; Ibu Sutrimah</p>
+          <a class="couple-card__ig" href="https://instagram.com/kartiikahs" target="_blank"
+            rel="noopener noreferrer">@kartiikahs</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section--story" id="story">
+      <div class="container section-fade" data-io>
+        <div class="story-card">
+          <div class="story-header">
+            <p class="section-eyebrow">Perjalanan Cinta</p>
+            <h2 class="section-title">Satu Frame, Beribu Cerita</h2>
+          </div>
+
+          <div class="story-list mt-col">
+            <article class="story-item">
+              <h3 class="story-item__title">Pertama Bertemu</h3>
+              <p class="story-item__meta">November 2018</p>
+              <p class="story-item__desc">Sebuah pertemuan yang tenang — seperti adegan pembuka film, ketika dunia
+                terasa berhenti sejenak.</p>
+            </article>
+            <article class="story-item">
+              <h3 class="story-item__title">Menjalin Kasih</h3>
+              <p class="story-item__meta">30 Maret 2025</p>
+              <p class="story-item__desc">Kisah berlanjut dengan ritme lembut: percakapan panjang, tawa kecil, dan
+                keyakinan yang sama-sama tumbuh.</p>
+            </article>
+            <article class="story-item">
+              <h3 class="story-item__title">Lamaran</h3>
+              <p class="story-item__meta">7 Desember 2025</p>
+              <p class="story-item__desc">Kami memilih hari itu untuk menegaskan janji — bukan puncak, melainkan babak
+                berikutnya yang ingin kami bagi bersama.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--countdown" id="countdown">
+      <div class="container section-fade" data-io>
+        <p class="section-eyebrow">Menuju Hari Bahagia</p>
+        <h2 class="section-title section-title--center">24 Mei 2026</h2>
+        <div class="countdown" id="countdownRoot" data-wedding="2026-05-24T08:00:00+07:00">
+          <div class="countdown__item">
+            <span class="countdown__num" id="cdDays">00</span>
+            <span class="countdown__label">Hari</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__item">
+            <span class="countdown__num" id="cdHours">00</span>
+            <span class="countdown__label">Jam</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__item">
+            <span class="countdown__num" id="cdMins">00</span>
+            <span class="countdown__label">Menit</span>
+          </div>
+          <div class="countdown__sep" aria-hidden="true">:</div>
+          <div class="countdown__item">
+            <span class="countdown__num" id="cdSecs">00</span>
+            <span class="countdown__label">Detik</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--event" id="event">
+      <div class="container section-fade" data-io>
+        <p class="section-eyebrow">Rangkaian Acara</p>
+        <h2 class="section-title section-title--center">Akad &amp; Resepsi</h2>
+        <div class="event-cards">
+          <div class="event-glass event-glass--float">
+            <div class="event-glass__icon" aria-hidden="true">◇</div>
+            <h3 class="event-glass__title">Sabtu, 24 Mei 2026</h3>
+            <p class="event-glass__text">Kami memohon doa restu agar acara berjalan khidmat dan penuh berkah.</p>
+          </div>
+          <div class="event-glass event-glass--float" style="--float-delay: 0.6s">
+            <div class="event-glass__icon" aria-hidden="true">◎</div>
+            <h3 class="event-glass__title">Lokasi</h3>
+            <p class="event-glass__text">Krajan Kidul, Sumberejo, Kec. Pabelan, Kab. Semarang</p>
+            <a class="event-glass__btn"
+              href="https://www.google.com/maps/search/?api=1&query=Krajan+Kidul+Sumberejo+Pabelan+Semarang"
+              target="_blank" rel="noopener noreferrer" data-ripple>Buka Maps</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--gallery" id="gallery">
+      <div class="container section-fade" data-io>
+        <p class="section-eyebrow">Galeri</p>
+        <h2 class="section-title">Momen Berwarna</h2>
+      </div>
+      <div class="gallery-slider">
+        <div class="gallery-track" id="galleryTrack" role="region" aria-label="Galeri foto pengantin">
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Buka foto 1">
+            <picture>
+              <source type="image/webp" srcset="images/gallery-01.webp" />
+              <img src="images/gallery-01.jpg" alt="Galeri 1" width="400" height="500" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span class="gallery-item__title">Momen 1</span>
+            </div>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Buka foto 2">
+            <picture>
+              <source type="image/webp" srcset="images/gallery-02.webp" />
+              <img src="images/gallery-02.jpg" alt="Galeri 2" width="400" height="500" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span class="gallery-item__title">Momen 2</span>
+            </div>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Buka foto 3">
+            <picture>
+              <source type="image/webp" srcset="images/gallery-03.webp" />
+              <img src="images/gallery-03.jpg" alt="Galeri 3" width="400" height="500" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span class="gallery-item__title">Momen 3</span>
+            </div>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Buka foto 4">
+            <picture>
+              <source type="image/webp" srcset="images/gallery-04.webp" />
+              <img src="images/gallery-04.jpg" alt="Galeri 4" width="400" height="500" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span class="gallery-item__title">Momen 4</span>
+            </div>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Buka foto 5">
+            <picture>
+              <source type="image/webp" srcset="images/gallery-02.webp" />
+              <img src="images/gallery-02.jpg" alt="Galeri 5" width="400" height="500" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span class="gallery-item__title">Momen 5</span>
+            </div>
+          </figure>
+          <figure class="gallery-item" tabindex="0" role="button" aria-label="Buka foto 6">
+            <picture>
+              <source type="image/webp" srcset="images/gallery-03.webp" />
+              <img src="images/gallery-03.jpg" alt="Galeri 6" width="400" height="500" loading="lazy"
+                decoding="async" />
+            </picture>
+            <div class="gallery-item__overlay" aria-hidden="true">
+              <span class="gallery-item__title">Momen 6</span>
+            </div>
+          </figure>
+        </div>
+
+        <div class="gallery-nav" aria-hidden="true">
+          <button type="button" class="gallery-nav__btn gallery-nav__btn--prev" id="galleryPrev"
+            aria-label="Swipe ke kiri" data-ripple>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button type="button" class="gallery-nav__btn gallery-nav__btn--next" id="galleryNext"
+            aria-label="Swipe ke kanan" data-ripple>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+        <div class="gallery-dots" id="galleryDots" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="section section--rsvp" id="rsvp">
+      <div class="container section-fade" data-io>
+        <p class="section-eyebrow">Ucapan &amp; Doa</p>
+        <h2 class="section-title section-title--center">Kirim Harapan Terbaikmu</h2>
+        <div class="wishes-shell">
+          <form class="rsvp-form" id="rsvpForm" novalidate
+            data-sheet-endpoint="https://script.google.com/macros/s/AKfycby1GjDJjOcY2emEBG7V1nxTayPLPisElrxxFxPYUkkq30AdmCeHuLO3kJjON7FLe01P/exec">
+            <label class="rsvp-field rsvp-field--floating">
+              <input type="text" name="name" autocomplete="name" required placeholder=" " />
+              <span>Nama</span>
+            </label>
+            <label class="rsvp-field rsvp-field--floating rsvp-field--full">
+              <textarea name="message" rows="4" minlength="5" required placeholder=" "></textarea>
+              <span>Ucapan / Doa</span>
+            </label>
+            <fieldset class="attend-choice rsvp-field--full">
+              <legend>Status Kehadiran</legend>
+              <label class="attend-pill">
+                <input type="radio" name="attendance" value="hadir" checked />
+                <span>Hadir</span>
+              </label>
+              <label class="attend-pill">
+                <input type="radio" name="attendance" value="tidak-hadir" />
+                <span>Tidak Hadir</span>
+              </label>
+            </fieldset>
+            <button type="submit" class="rsvp-submit" data-ripple id="rsvpSubmit">
+              <span>Kirim Ucapan</span>
+            </button>
+            <p class="rsvp-note" id="rsvpNote" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="wish-meta">
+            <div class="wish-stats" aria-live="polite">
+              <article class="stat-pill">
+                <p>Total Ucapan</p>
+                <strong id="totalWishes">0</strong>
+              </article>
+              <article class="stat-pill">
+                <p>Hadir</p>
+                <strong id="totalAttend">0</strong>
+              </article>
+              <article class="stat-pill">
+                <p>Tidak Hadir</p>
+                <strong id="totalAbsent">0</strong>
+              </article>
+            </div>
+            <div class="wish-filter" role="tablist" aria-label="Filter ucapan">
+              <button type="button" class="filter-btn is-active" data-filter="all" data-ripple>Semua</button>
+              <button type="button" class="filter-btn" data-filter="hadir" data-ripple>Hadir</button>
+              <button type="button" class="filter-btn" data-filter="tidak-hadir" data-ripple>Tidak Hadir</button>
+            </div>
+          </div>
+
+          <div class="wishes-list-wrap" id="wishesListWrap">
+            <div class="wishes-list" id="wishesList" aria-live="polite"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--gift" id="gift">
+      <div class="container section-fade" data-io>
+        <p class="section-eyebrow">Amplop Digital</p>
+        <h2 class="section-title section-title--center">Hadiah Tanpa Jarak</h2>
+        <div class="gift-grid">
+          <div class="gift-card">
+            <img src="images/Bank_Central_Asia.png" alt="Logo BCA" class="bank-logo">
+            <h3>BCA — Supriyadi</h3>
+
+            <p class="gift-card__num" data-copy="3201274981">3201274981</p>
+            <button type="button" class="gift-copy" data-copy-target="3201274981" data-ripple>Salin Rekening</button>
+          </div>
+
+          <div class="gift-card">
+            <img src="images/Bank_Negara_Indonesia.png" alt="Logo BNI" class="bank-logo">
+            <h3>BNI — Hayu Kartikasari</h3>
+            <p class="gift-card__num" data-copy="1166990603">1166990603</p>
+            <button type="button" class="gift-copy" data-copy-target="1166990603" data-ripple>Salin Rekening</button>
+          </div>
+
+        </div>
+        <p class="gift-toast" id="giftToast" role="status" aria-live="polite"></p>
+
+
+        <div class="gift-confirm section-fade" data-io>
+          <div class="gift-confirm__head">
+            <p class="section-eyebrow">Konfirmasi Pengiriman Gift</p>
+            <h3 class="gift-confirm__title">Bantu Kami Mencatat Hadiah Anda</h3>
+          </div>
+          <form class="gift-form" id="giftConfirmForm" novalidate>
+            <label class="gift-field gift-field--floating">
+              <input type="text" name="senderName" required placeholder=" " />
+              <span>Nama Pengirim</span>
+            </label>
+            <label class="gift-field gift-field--floating">
+              <select name="method" required>
+                <option value=""></option>
+                <option value="Transfer Bank">Transfer Bank</option>
+                <option value="E-Wallet (OVO / DANA / GoPay)">E-Wallet (OVO / DANA / GoPay)</option>
+              </select>
+              <span>Metode Pengiriman Gift</span>
+            </label>
+            <label class="gift-field gift-field--floating">
+              <input type="text" name="amount" inputmode="numeric" placeholder=" " />
+              <span>Jumlah / Nominal (opsional)</span>
+            </label>
+            <label class="gift-field gift-field--floating">
+              <input type="date" name="sendDate" required />
+              <span>Tanggal Pengiriman</span>
+            </label>
+            <label class="gift-field gift-field--floating gift-field--full">
+              <textarea name="message" rows="4" minlength="5" required placeholder=" "></textarea>
+              <span>Pesan / Doa</span>
+            </label>
+
+            <div class="gift-upload gift-field--full" id="giftUploadZone">
+              <input type="file" id="giftProof" name="proof" accept="image/png, image/jpeg" hidden />
+              <p class="gift-upload__title">Upload Bukti Transfer (opsional)</p>
+              <p class="gift-upload__hint">Drag &amp; drop JPG/PNG ke sini atau klik untuk pilih file.</p>
+              <button type="button" class="gift-upload__btn" id="giftUploadTrigger" data-ripple>Pilih Gambar</button>
+              <div class="gift-preview" id="giftPreview" hidden>
+                <img id="giftPreviewImage" alt="Preview bukti transfer" />
+              </div>
+            </div>
+
+            <label class="gift-anon gift-field--full">
+              <input type="checkbox" name="isAnonymous" />
+              <span>Tampilkan sebagai anonim</span>
+            </label>
+
+            <button type="submit" class="gift-submit" id="giftConfirmSubmit" data-ripple>
+              <span class="gift-submit__label">Kirim Konfirmasi Gift</span>
+              <span class="gift-submit__spinner" aria-hidden="true"></span>
+            </button>
+            <p class="gift-note" id="giftConfirmNote" role="status" aria-live="polite"></p>
+          </form>
+
+          <div class="gift-admin" id="giftAdminPanel" hidden>
+            <div class="gift-admin__head">
+              <h4>Data Konfirmasi (Demo Lokal)</h4>
+              <div class="gift-admin__actions">
+                <button type="button" class="gift-export" id="giftExportJson" data-ripple>Export JSON</button>
+                <button type="button" class="gift-export" id="giftAdminLogout" data-ripple>Logout Admin</button>
+              </div>
+            </div>
+            <div class="gift-admin__toolbar">
+              <label class="gift-admin-search">
+                <input type="search" id="giftAdminSearch" placeholder="Cari nama / pesan..." />
+              </label>
+              <label class="gift-admin-method">
+                <select id="giftAdminMethodFilter">
+                  <option value="all">Semua Metode</option>
+                  <option value="Transfer Bank">Transfer Bank</option>
+                  <option value="E-Wallet (OVO / DANA / GoPay)">E-Wallet</option>
+                </select>
+              </label>
+            </div>
+            <div class="gift-admin__list" id="giftConfirmList"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="lightbox" id="galleryLightbox" aria-hidden="true">
+      <div class="lightbox__backdrop" data-close></div>
+      <div class="lightbox__content">
+        <button type="button" class="lightbox__close" aria-label="Tutup galeri" data-close>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <button type="button" class="lightbox__prev" aria-label="Foto sebelumnya" id="lightboxPrev">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <div class="lightbox__img-wrap">
+          <img src="" alt="" class="lightbox__img" id="lightboxImg" />
+        </div>
+        <button type="button" class="lightbox__next" aria-label="Foto selanjutnya" id="lightboxNext">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <footer class="closing" id="closing">
+      <div class="closing__veil" aria-hidden="true"></div>
+      <div class="closing__content section-fade" data-io>
+        <p class="closing__line">Terima kasih atas doa dan restunya</p>
+        <p class="closing__dedication">Dalam sederhana kami, engkau hadir dengan cara yang membuat semuanya terasa lebih
+          bermakna. Terima kasih telah datang, meski dunia mungkin sedang sibuk memanggilmu ke arah lain.</p>
+        <h2 class="closing__names">Supriyadi &amp; Hayu</h2>
+        <p class="closing__tag">Wassalamu’alaikum warahmatullahi wabarakatuh</p>
+        <p class="closing__copyright">Copyright 2016 supriyadi</p>
+      </div>
+    </footer>
+  </main>
+
+  <nav class="dock" aria-label="Navigasi cepat">
+    <a href="#hero" data-scrollto aria-current="page">Home</a>
+    <a href="#story" data-scrollto>Story</a>
+    <a href="#event" data-scrollto>Event</a>
+    <a href="#gallery" data-scrollto>Galeri</a>
+    <a href="#rsvp" data-scrollto>RSVP</a>
+  </nav>
+
+
+  <script src="script.js" defer></script>
+</body>
+
+</html>
