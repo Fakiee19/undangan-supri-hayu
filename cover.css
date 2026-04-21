@@ -94,7 +94,7 @@ body.scroll-locked {
 }
 
 .cover-page__eyebrow {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.875rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
@@ -110,17 +110,21 @@ body.scroll-locked {
     font-family: 'Playfair Display', serif;
     font-size: clamp(2.5rem, 8vw, 4rem);
     font-weight: 500;
-    line-height: 1.1;
-    color: #f4f0ec;
+    line-height: 1.2;
+    margin: 0;
+    color: #ffffff;
     opacity: 0;
     transform: translateY(20px);
     animation: coverFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.7s forwards;
 }
 
 .cover-page__date {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    letter-spacing: 0.1em;
+    font-family: var(--font-display, "Times New Roman", serif);
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    letter-spacing: -0.05em;
+    line-height: 1.2;
+    margin: 0;
+    margin-top: 1rem;
     color: #a8957f;
     opacity: 0;
     transform: translateY(20px);
@@ -130,7 +134,7 @@ body.scroll-locked {
 .cover-page__countdown {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     opacity: 0;
     transform: translateY(20px);
     animation: coverFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 1.0s forwards;
@@ -157,7 +161,7 @@ body.scroll-locked {
 }
 
 .cover-page__cd-item small {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -176,7 +180,7 @@ body.scroll-locked {
 }
 
 .cover-page__guest p {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.875rem;
     color: rgba(244, 240, 236, 0.7);
     margin-bottom: 0.5rem;
@@ -196,7 +200,7 @@ body.scroll-locked {
     border: 1px solid rgba(168, 149, 127, 0.3);
     border-radius: 100px;
     color: #a8957f;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-ui);
     font-size: 0.875rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
