@@ -72,7 +72,10 @@ body.scroll-locked {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at center, rgba(168, 149, 127, 0.15) 0%, rgba(12, 10, 8, 0.95) 100%);
+    background-image: radial-gradient(circle at center, rgba(12, 10, 8, 0.5) 0%, rgba(12, 10, 8, 0.95) 100%), url('images/bacground.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     z-index: 1;
 }
 
@@ -87,6 +90,7 @@ body.scroll-locked {
     align-items: center;
     gap: 1rem;
     margin: auto;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
 .cover-page__eyebrow {
