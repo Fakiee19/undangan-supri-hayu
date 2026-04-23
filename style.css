@@ -2391,6 +2391,7 @@ body.low-fx .lightbox__backdrop {
   z-index: 7500;
   display: flex;
   gap: 0.35rem;
+  width: min(94vw, 560px);
   padding: 0.45rem 0.6rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.8);
@@ -2398,6 +2399,12 @@ body.low-fx .lightbox__backdrop {
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(201, 169, 98, 0.2);
   transition: transform 0.8s var(--ease-out-expo);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dock::-webkit-scrollbar {
+  display: none;
 }
 
 .dock.is-visible {
@@ -2405,7 +2412,7 @@ body.low-fx .lightbox__backdrop {
 }
 
 .dock a {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink-soft);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2416,6 +2423,9 @@ body.low-fx .lightbox__backdrop {
   outline: none;
   cursor: pointer;
   display: inline-block;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  min-width: fit-content;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2571,7 +2581,7 @@ body.low-fx .dock {
   }
 
   .dock {
-    width: calc(100vw - 1rem);
+    width: calc(100vw - 0.9rem);
     max-width: 420px;
     left: 50%;
     bottom: 0.5rem;
@@ -2581,7 +2591,7 @@ body.low-fx .dock {
   }
 
   .dock a {
-    flex: 1;
+    flex: 1 0 auto;
     text-align: center;
     font-size: 0.62rem;
     letter-spacing: 0.08em;
@@ -2616,9 +2626,4 @@ body.low-fx .dock {
   .cursor-glow {
     display: none !important;
   }
-}
-
-
-.dock a {
-  color: #000 !important;
 }

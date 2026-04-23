@@ -27,6 +27,8 @@
     countdownEls: null,
     cdPrev: { d: -1, h: -1, m: -1, s: -1 },
     weddingDate: null,
+    dockManualTarget: "",
+    dockManualUntil: 0,
   };
 
   function detectLowFx() {
@@ -117,6 +119,26 @@
     const past = state.scrollY > state.innerH * 0.35;
     dock.classList.toggle("is-visible", past);
     const links = dock.querySelectorAll("a");
+    const now = performance.now();
+    const manualStillActive =
+      !!state.dockManualTarget &&
+      now < state.dockManualUntil &&
+      !!document.querySelector(state.dockManualTarget);
+
+    if (manualStillActive) {
+      links.forEach((a) => {
+        const on = a.getAttribute("href") === state.dockManualTarget;
+        if (on) a.setAttribute("aria-current", "page");
+        else a.removeAttribute("aria-current");
+      });
+      return;
+    }
+
+    if (state.dockManualTarget && now >= state.dockManualUntil) {
+      state.dockManualTarget = "";
+      state.dockManualUntil = 0;
+    }
+
     const from = state.scrollY + Math.min(250, state.innerH * 0.3);
     let current = "#hero";
     links.forEach((a) => {
@@ -239,6 +261,11 @@
         const el = document.querySelector(href);
         if (!el) return;
         e.preventDefault();
+        // Lock dock active state briefly so highlight doesn't hop
+        // while smooth scrolling passes intermediate sections.
+        state.dockManualTarget = href;
+        state.dockManualUntil = performance.now() + (state.reducedMotion || state.lowFx ? 250 : 1100);
+        updateDock();
         scrollToSection(el);
       });
     });
@@ -524,7 +551,7 @@
             name: String(item.name || "").trim(),
             message: String(item.message || "").trim(),
             attendance: String(item.attendance || "hadir") === "tidak-hadir" ? "tidak-hadir" : "hadir",
-            createdAt: String(item.createdAt || new Date().toISOString()),
+            createdAt: String(item.createdAt || item.createdAT || new Date().toISOString()),
           }))
           .filter((item) => item.name && item.message);
         stateWish.source = "sheet";
