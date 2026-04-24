@@ -567,7 +567,7 @@
       try {
         const res = await fetch(sheetEndpoint, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(entry),
         });
         if (!res.ok) return { ok: false, reason: "http-error" };
@@ -761,6 +761,26 @@
     const ADMIN_SESSION_KEY = "wedding_gift_admin_unlocked_v1";
     const ADMIN_PIN_HASH = "4151a7b7c7f2b992077270a09183abeac2249df079dbf1cbd785f063212278e6";
     const stateGift = { items: [], proofDataUrl: "", proofName: "", search: "", method: "all", adminUnlocked: false };
+    const sheetEndpoint = String(form.getAttribute("data-sheet-endpoint") || "").trim();
+
+    async function sendToSheet(entry) {
+      if (!sheetEndpoint) return { ok: false, reason: "no-endpoint" };
+      try {
+        const res = await fetch(sheetEndpoint, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            ...entry,
+            name: entry.senderName, // Fallback for Apps Script
+            attendance: entry.method // Fallback for Apps Script
+          }),
+        });
+        if (!res.ok) return { ok: false, reason: "http-error" };
+        return { ok: true };
+      } catch {
+        return { ok: false, reason: "network-error" };
+      }
+    }
 
     function toRupiahInput(raw) {
       const onlyDigits = raw.replace(/[^\d]/g, "");
@@ -1042,7 +1062,7 @@
       renderAdminList(false);
     });
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!validateFields()) return;
       submitBtn.classList.add("is-loading");
@@ -1062,30 +1082,39 @@
         minute: "2-digit",
       }).format(new Date());
 
-      window.setTimeout(() => {
-        stateGift.items.unshift({
-          id: `${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
-          senderName,
-          method: method || "Transfer Bank",
-          amount,
-          sendDate,
-          message,
-          isAnonymous,
-          proofName: stateGift.proofName,
-          proofDataUrl: stateGift.proofDataUrl,
-          timestamp,
-        });
+      const entry = {
+        id: `${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+        senderName,
+        method: method || "Transfer Bank",
+        amount,
+        sendDate,
+        message,
+        isAnonymous,
+        proofName: stateGift.proofName,
+        proofDataUrl: stateGift.proofDataUrl,
+        timestamp,
+        type: "gift"
+      };
 
-        writeStorage();
-        setAdminPanelVisibility();
-        renderAdminList(false);
-        submitBtn.classList.remove("is-loading");
-        showSuccess("Terima kasih, konfirmasi gift Anda telah diterima 💖");
-        note.scrollIntoView({ behavior: state.reducedMotion || state.lowFx ? "auto" : "smooth", block: "center" });
+      const syncResult = await sendToSheet(entry);
 
-        form.reset();
-        applyPreview("", "");
-      }, 900);
+      stateGift.items.unshift(entry);
+
+      writeStorage();
+      setAdminPanelVisibility();
+      renderAdminList(false);
+      submitBtn.classList.remove("is-loading");
+
+      if (syncResult.ok) {
+        showSuccess("Terima kasih, konfirmasi gift Anda telah diterima dan tersimpan ke spreadsheet 💖");
+      } else {
+        showSuccess("Terima kasih, konfirmasi gift Anda telah diterima (disimpan lokal).");
+      }
+
+      note.scrollIntoView({ behavior: state.reducedMotion || state.lowFx ? "auto" : "smooth", block: "center" });
+
+      form.reset();
+      applyPreview("", "");
     });
 
     renderAdminList(true);

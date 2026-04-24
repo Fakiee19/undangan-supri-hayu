@@ -72,7 +72,7 @@ body.scroll-locked {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: radial-gradient(circle at center, rgba(12, 10, 8, 0.5) 0%, rgba(12, 10, 8, 0.95) 100%), url('images/bacground.webp');
+    background-image: radial-gradient(circle at center, rgba(12, 10, 8, 0.3) 0%, rgba(12, 10, 8, 0.7) 100%), url('images/bacground.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -83,7 +83,6 @@ body.scroll-locked {
     position: relative;
     z-index: 2;
     text-align: center;
-    padding: 1rem;
     max-width: 600px;
     display: flex;
     flex-direction: column;
@@ -91,6 +90,13 @@ body.scroll-locked {
     gap: 1rem;
     margin: auto;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 2px 5px rgba(0, 0, 0, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .cover-page__eyebrow {
@@ -98,7 +104,7 @@ body.scroll-locked {
     font-size: 0.875rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: #a8957f;
+    color: #f2d480;
     margin-top: 3rem;
     margin-bottom: -0.5rem;
     opacity: 0;
@@ -107,8 +113,8 @@ body.scroll-locked {
 }
 
 .cover-page__title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-family: 'Montage Serif', serif;
+    font-size: clamp(2rem, 6.5vw, 3.2rem);
     font-weight: 500;
     line-height: 1.2;
     margin: 0;
@@ -120,12 +126,12 @@ body.scroll-locked {
 
 .cover-page__date {
     font-family: var(--font-display, "Times New Roman", serif);
-    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-size: clamp(2rem, 6.5vw, 3.2rem);
     letter-spacing: -0.05em;
     line-height: 1.2;
     margin: 0;
     margin-top: 1rem;
-    color: #a8957f;
+    color: #f2d480;
     opacity: 0;
     transform: translateY(20px);
     animation: coverFadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.9s forwards;
@@ -145,7 +151,7 @@ body.scroll-locked {
     flex-direction: column;
     align-items: center;
     background: rgba(168, 149, 127, 0.05);
-    border: 1px solid rgba(168, 149, 127, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 8px;
     padding: 0.75rem 1rem;
     min-width: 60px;
@@ -165,14 +171,14 @@ body.scroll-locked {
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    color: #a8957f;
+    color: #f2d480;
     margin-top: 0.25rem;
 }
 
 .cover-page__guest {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(168, 149, 127, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
     width: 80%;
     opacity: 0;
     transform: translateY(20px);
@@ -188,7 +194,7 @@ body.scroll-locked {
 
 .cover-page__guest h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: #f4f0ec;
     font-weight: 500;
 }
@@ -197,7 +203,7 @@ body.scroll-locked {
     margin-top: 0;
     padding: 1rem 2.5rem;
     background: rgba(168, 149, 127, 0.1);
-    border: 1px solid rgba(168, 149, 127, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.4);
     border-radius: 100px;
     color: #a8957f;
     font-family: var(--font-ui);
@@ -219,7 +225,7 @@ body.scroll-locked {
 
 .cover-page__btn:hover {
     background: rgba(168, 149, 127, 0.2);
-    border-color: #a8957f;
+    border-color: #ffffff;
     transform: scale(1.05) translateY(-2px);
     box-shadow: 0 8px 30px rgba(168, 149, 127, 0.2), 0 0 15px rgba(168, 149, 127, 0.3) inset;
     color: #f4f0ec;
